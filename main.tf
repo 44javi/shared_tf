@@ -39,8 +39,6 @@ resource "azurerm_storage_account" "this" {
 }
 
 
-
-
 # for tags
 locals {
   default_tags = {
