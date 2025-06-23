@@ -1,10 +1,10 @@
 resource "azurerm_monitor_action_group" "alerts" {
-  name                = "alerts-${var.project}-${var.environment}"
+  name                = "alert-${var.project}-${var.environment}"
   resource_group_name = azurerm_resource_group.management.name
   short_name          = "alerts"
 
   email_receiver {
-    name          = "alerts"
+    name          = "alert"
     email_address = var.email
   }
 }

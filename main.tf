@@ -22,12 +22,17 @@ resource "azurerm_storage_account" "state" {
   access_tier                     = "Hot"
   default_to_oauth_authentication = true
   min_tls_version                 = "TLS1_2"
+  https_traffic_only_enabled      = true
+  public_network_access_enabled   = true # setting to false disables portal access
+  shared_access_key_enabled       = true # setting to false disconnects backend that uses az login
+
 
   blob_properties {
     change_feed_enabled           = true
     change_feed_retention_in_days = 30
     last_access_time_enabled      = true
     versioning_enabled            = true
+
     container_delete_retention_policy {
       days = 30
     }
@@ -52,6 +57,7 @@ resource "azurerm_storage_container" "this" {
   name                  = each.key
   storage_account_id    = azurerm_storage_account.state.id
   container_access_type = "private"
+
 }
 
 # for tags
