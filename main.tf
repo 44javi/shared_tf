@@ -2,6 +2,8 @@
 resource "azurerm_resource_group" "management" {
   name     = "rg-${var.project}-${var.environment}"
   location = var.region
+
+  tags = local.default_tags
 }
 
 resource "random_string" "this" {
@@ -60,6 +62,6 @@ locals {
     project     = var.project
     region      = var.region
     createdBy   = "Terraform"
-    created_on = formatdate("YYYY-MM-DD HH:mm", timestamp())
+    #created_on = formatdate("YYYY-MM-DD HH:mm", timestamp())
   }
 }

@@ -1,5 +1,3 @@
-# root variables.tf
-
 variable "project" {
   description = "Main project associated with this deployment"
   type        = string

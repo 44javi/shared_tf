@@ -11,7 +11,6 @@ resource "azurerm_key_vault" "this" {
   soft_delete_retention_days = 30
   purge_protection_enabled   = true
 
-  tags = local.default_tags
 }
 
 # Key vault permission

@@ -20,5 +20,4 @@ resource "azurerm_log_analytics_workspace" "this" {
   internet_ingestion_enabled = true
   internet_query_enabled     = true
 
-  tags = local.default_tags
 }

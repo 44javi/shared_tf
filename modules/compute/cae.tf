@@ -4,5 +4,4 @@ resource "azurerm_container_app_environment" "this" {
   location                   = azurerm_resource_group.management.location
   log_analytics_workspace_id = azurerm_log_analytics_workspace.this.id
 
-  tags = local.default_tags
 }

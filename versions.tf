@@ -1,5 +1,5 @@
 terraform {
-  #backend "azurerm" {} # Settings come from backend.hcl
+  backend "azurerm" {} 
 
   required_providers {
     azurerm = {
@@ -18,7 +18,6 @@ terraform {
 }
 
 provider "azurerm" {
-  subscription_id     = var.subscription_id
   storage_use_azuread = true
   features {}
 }
