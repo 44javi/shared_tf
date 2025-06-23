@@ -1,18 +1,25 @@
 # Create a Resource Group
-resource "azurerm_resource_group" "main" {
-  name     = "${var.client}_shared_${var.suffix}"
+resource "azurerm_resource_group" "management" {
+  name     = "rg-${var.project}-${var.suffix}"
   location = var.region
 }
 
-resource "azurerm_storage_account" "this" {
-  name                            = "uniquestategg6sj8"
-  resource_group_name             = azurerm_resource_group.main.name
-  location                        = azurerm_resource_group.main.location
+resource "random_string" "this" {
+  length  = 5
+  upper   = false
+  special = false
+}
+
+resource "azurerm_storage_account" "state" {
+  name                            = "st${random_string.this.result}"
+  resource_group_name             = azurerm_resource_group.management.name
+  location                        = azurerm_resource_group.management.location
   account_tier                    = "Standard"
   account_replication_type        = "GRS"
   account_kind                    = "StorageV2"
   access_tier                     = "Hot"
   default_to_oauth_authentication = true
+  min_tls_version                 = "TLS1_2"
 
   blob_properties {
     change_feed_enabled           = true
@@ -38,6 +45,12 @@ resource "azurerm_storage_account" "this" {
   }
 }
 
+resource "azurerm_storage_container" "this" {
+  for_each              = toset(["tf-states"])
+  name                  = each.key
+  storage_account_id    = azurerm_storage_account.state.id
+  container_access_type = "private"
+}
 
 # for tags
 locals {
@@ -45,8 +58,8 @@ locals {
     owner       = var.owner
     environment = var.environment
     project     = var.project
-    client      = var.client
     region      = var.region
-    created_by  = "Terraform"
+    createdBy   = "Terraform"
+    created_on = formatdate("YYYY-MM-DD HH:mm", timestamp())
   }
 }

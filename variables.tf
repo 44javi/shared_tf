@@ -1,7 +1,7 @@
 # root variables.tf
 
-variable "client" {
-  description = "Client name for resource naming."
+variable "project" {
+  description = "Main project associated with this deployment"
   type        = string
 }
 
@@ -15,8 +15,6 @@ variable "region" {
   type        = string
 }
 
-
-
 variable "suffix" {
   description = "Numerical identifier for resources"
   type        = string
@@ -27,12 +25,7 @@ variable "owner" {
   type        = string
 }
 
-variable "project" {
-  description = "Main project associated with this deployment"
-  type        = string
-}
-
-variable "created_by" {
+variable "createdBy" {
   description = "Tag showing Terraform created this resource"
   type        = string
 }
@@ -42,3 +35,7 @@ variable "subscription_id" {
   type        = string
 }
 
+variable "email" {
+  description = "central email for alerts and notifications"
+  type        = string
+}
