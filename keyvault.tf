@@ -2,7 +2,7 @@
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_key_vault" "this" {
-  name                       = "kv-${var.project}-${var.suffix}-${random_string.this.result}"
+  name                       = "kv-${var.project}-${var.environment}-${random_string.this.result}"
   resource_group_name        = azurerm_resource_group.management.name
   location                   = var.region
   tenant_id                  = data.azurerm_client_config.current.tenant_id

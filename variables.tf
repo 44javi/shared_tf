@@ -15,11 +15,6 @@ variable "region" {
   type        = string
 }
 
-variable "suffix" {
-  description = "Numerical identifier for resources"
-  type        = string
-}
-
 variable "owner" {
   description = "Person responsible for the resource"
   type        = string

@@ -1,6 +1,6 @@
 # Create a Resource Group
 resource "azurerm_resource_group" "management" {
-  name     = "rg-${var.project}-${var.suffix}"
+  name     = "rg-${var.project}-${var.environment}"
   location = var.region
 }
 
