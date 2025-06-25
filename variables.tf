@@ -20,7 +20,7 @@ variable "owner" {
   type        = string
 }
 
-variable "createdBy" {
+variable "created_by" {
   description = "Tag showing Terraform created this resource"
   type        = string
 }

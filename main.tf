@@ -67,7 +67,7 @@ locals {
     environment = var.environment
     project     = var.project
     region      = var.region
-    createdBy   = "Terraform"
+    created_by   = "Terraform"
     #created_on = formatdate("YYYY-MM-DD HH:mm", timestamp())
   }
 }
