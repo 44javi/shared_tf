@@ -1,5 +1,3 @@
-# root variables.tf
-
 variable "project" {
   description = "Main project associated with this deployment"
   type        = string
@@ -20,7 +18,7 @@ variable "owner" {
   type        = string
 }
 
-variable "created_by" {
+variable "createdBy" {
   description = "Tag showing Terraform created this resource"
   type        = string
 }
